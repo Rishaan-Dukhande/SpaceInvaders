@@ -1,18 +1,22 @@
 /**
- * @tutorial 
+ * @tutorial Coding, Kenny Yip. “ Code Space Invaders in Java.” YouTube, 25 June 2024, www.youtube.com/watch?v=UILUMvjLEVU. Accessed 17 May 2026. 
  *
  * @author Rishaan D
  * @version 5/16/2026
  */
 
 import javax.swing.*;
+/*
+ * This class creates a JFrame for the SpaceInvaders game
+ * The JFrame is non-resizeable and 512 x 512 px
+ */
 public class Game
 {
-    // instance variables - replace the example below with your own
+    // instance variables
     private int x;
 
     /**
-     * Constructor for objects of class App
+     * Constructor for objects of class Game
      */
     public Game()
     {

@@ -1,8 +1,8 @@
 /**
- * Write a description of class SpaceInvaders here.
+ * @tutorial Coding, Kenny Yip. “ Code Space Invaders in Java.” YouTube, 25 June 2024, www.youtube.com/watch?v=UILUMvjLEVU. Accessed 17 May 2026. 
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Rishaan D
+ * @version 5/16/2026
  */
 
 import java.awt.*;
@@ -11,10 +11,15 @@ import java.util.ArrayList;
 import java.util.Random; //for randomized color
 import javax.swing.*;
 
-//JPanel class allows for drawing - utilizes inheritance to 
-//have JPanel functions with additional functions specified to the game
+/*
+ * JPanel class allows for drawing - utilizes inheritance to have JPanel functions with additional functions specified to the game
+ * implements ActionListener and KeyListener to track keyboard strokes and performed actions
+ */
 public class SpaceInvaders extends JPanel implements ActionListener, KeyListener
 {
+    /*
+     * This class is used to create bullets, the ship, and the aliens
+     */
     class Sprite
         {
             int x;
@@ -25,6 +30,9 @@ public class SpaceInvaders extends JPanel implements ActionListener, KeyListener
             boolean alive = true; // only for aliens
             boolean used = false; //used before bullets shot by user
             
+            /*
+             * The sprite constructor initializes all of the attributes of each sprite
+             */
             public Sprite(int x, int y, int width, int height, Image img)
             {
                 this.x = x;
@@ -72,24 +80,24 @@ public class SpaceInvaders extends JPanel implements ActionListener, KeyListener
     int alienCount = 0; //number of aliens to defeat (row * column)
     int alienVelocityX = 1; //aliens move 1 tile every time;
     
-    
     //bullets
     ArrayList<Sprite> bulletArray;
     int bulletWidth = tileSize/8;
     int bulletHeight = tileSize/2;
     int bulletVelocityY = -10; //bullets moving speed
     
+    //creates a game loop timer to reload images at a constant rate
     Timer gameLoop;
+    
     int score = 0;
     boolean gameOver = false;
     
 
     /**
-     * Constructor for objects of class SpaceInvaders
+     * Constructor for objects of class SpaceInvaders - intializes frame, images, game timer, and arrays to store sprites
      */
     public SpaceInvaders()
     {
-        
         // initializes frame
         setPreferredSize(new Dimension(boardWidth, boardHeight));
         setBackground(Color.black);
@@ -120,12 +128,19 @@ public class SpaceInvaders extends JPanel implements ActionListener, KeyListener
         gameLoop.start();
         
     }
+    /*
+     * This function paints each component of the Space Invaders game by calling the paint method from the parent JPanel class and then calls the draw method 
+     * specific to the SpaceInvaders class to draw ship, bullets, aliens, and score on the JPanel in the JFrame
+     */
     public void paintComponent(Graphics g)
     {
             super.paintComponent(g);
             draw(g);
     }
-    
+    /*
+     * The draw method draws a ship, an array of aliens, bullets that come from the ship, and the score on the screen. 
+     * It utilizes arrays for aliens and bullets to draw more than one of each type of sprite
+     */
     public void draw(Graphics g)
     {
         // draw ship
@@ -163,10 +178,16 @@ public class SpaceInvaders extends JPanel implements ActionListener, KeyListener
     }
     
     /*
-     * iterates through all aliens to move them
+     * The move method uses for-loops to iterate through the alien list to move all of them to either side
+     * Once the aliens touch a border of the JFrame, the aliens move the other way and go down by one row
+     * 
+     * The method moves the bullets at a constant velocity from the ship towards the aliens
+     * Once bullets are out of screen, they are removed from the bulletArray
+     * Once all the aliens are defeated, the program moves to the next level by incrementing columns and rows of aliens by 1
      */
     public void move()
     {
+        //moves aliens
         for (int i = 0; i < alienArray.size(); i++) 
         {
             Sprite alien = alienArray.get(i);
@@ -191,7 +212,7 @@ public class SpaceInvaders extends JPanel implements ActionListener, KeyListener
             }
         }
         
-        //bullets
+        //moves bullets
         for (int i = 0; i < bulletArray.size(); i++){
             Sprite bullet = bulletArray.get(i);
             bullet.y += bulletVelocityY;
@@ -227,7 +248,8 @@ public class SpaceInvaders extends JPanel implements ActionListener, KeyListener
         }
     }
     /*
-     * Creates Aliens in a array formation by iterating through two for-loops to place the aliens in specific areas of the 16x16 grid frame
+     * Creates Aliens in an array formation by iterating through two for-loops to place the aliens in specific areas side-by-side of the 16x16 grid frame
+     * The aliens are then added to the alienArray
      */
     public void createAliens() 
     {
@@ -249,7 +271,13 @@ public class SpaceInvaders extends JPanel implements ActionListener, KeyListener
         }
         alienCount = alienArray.size(); 
     }
-    
+    /*
+     * This method detects if a bullet collides with an alien 
+     * This method works by making sure all portions of an edge overlap by comparing the borders of a bullet and alien
+     * I learned about the derivation of this formula from: 
+     * Dev, Aristurtle. “ Axis Aligned Bounding Box Collision Detection | MonoGame.” YouTube, 10 Mar. 2024, www.youtube.com/watch?v=UOfbGeq0ZkM&t=94s. 
+     * Accessed 17 May 2026. 
+     */
     public boolean detectCollision(Sprite a, Sprite b) {
         return a.x < b.x + b.width &&
         a.x + a.width > b.x &&
@@ -286,6 +314,11 @@ public class SpaceInvaders extends JPanel implements ActionListener, KeyListener
     /*
      * Unimplemented method for KeyListener
      * Knows if the key has been released
+     * 
+     * If the game is over and any key is pressed, then it will restart the game and reset all of the variables associated with the inital sprites.
+     * If the left arrow key is pressed, the ship moves one tile left
+     * If the right arrow key is pressed, the ship moves one tile right
+     * If the space key is pressed, a bullet is shot from the ship and accelerates towards the array of aliens
      */
     @Override
     public void keyReleased(KeyEvent e) 

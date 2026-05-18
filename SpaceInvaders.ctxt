@@ -1,23 +1,27 @@
 #BlueJ class context
 comment0.target=SpaceInvaders
+comment0.text=\n\ JPanel\ class\ allows\ for\ drawing\ -\ utilizes\ inheritance\ to\ have\ JPanel\ functions\ with\ additional\ functions\ specified\ to\ the\ game\n\ implements\ ActionListener\ and\ KeyListener\ to\ track\ keyboard\ strokes\ and\ performed\ actions\n
 comment1.params=
 comment1.target=SpaceInvaders()
-comment1.text=\n\ Constructor\ for\ objects\ of\ class\ SpaceInvaders\n
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ SpaceInvaders\ -\ intializes\ frame,\ images,\ game\ timer,\ and\ arrays\ to\ store\ sprites\n
 comment10.params=e
 comment10.target=void\ keyReleased(java.awt.event.KeyEvent)
-comment10.text=\n\ Unimplemented\ method\ for\ KeyListener\n\ Knows\ if\ the\ key\ has\ been\ released\n
+comment10.text=\n\ Unimplemented\ method\ for\ KeyListener\n\ Knows\ if\ the\ key\ has\ been\ released\n\ \n\ If\ the\ game\ is\ over\ and\ any\ key\ is\ pressed,\ then\ it\ will\ restart\ the\ game\ and\ reset\ all\ of\ the\ variables\ associated\ with\ the\ inital\ sprites.\n\ If\ the\ left\ arrow\ key\ is\ pressed,\ the\ ship\ moves\ one\ tile\ left\n\ If\ the\ right\ arrow\ key\ is\ pressed,\ the\ ship\ moves\ one\ tile\ right\n\ If\ the\ space\ key\ is\ pressed,\ a\ bullet\ is\ shot\ from\ the\ ship\ and\ accelerates\ towards\ the\ array\ of\ aliens\n
 comment2.params=g
 comment2.target=void\ paintComponent(java.awt.Graphics)
+comment2.text=\n\ This\ function\ paints\ each\ component\ of\ the\ Space\ Invaders\ game\ by\ calling\ the\ paint\ method\ from\ the\ parent\ JPanel\ class\ and\ then\ calls\ the\ draw\ method\ \n\ specific\ to\ the\ SpaceInvaders\ class\ to\ draw\ ship,\ bullets,\ aliens,\ and\ score\ on\ the\ JPanel\ in\ the\ JFrame\n
 comment3.params=g
 comment3.target=void\ draw(java.awt.Graphics)
+comment3.text=\n\ The\ draw\ method\ draws\ a\ ship,\ an\ array\ of\ aliens,\ bullets\ that\ come\ from\ the\ ship,\ and\ the\ score\ on\ the\ screen.\ \n\ It\ utilizes\ arrays\ for\ aliens\ and\ bullets\ to\ draw\ more\ than\ one\ of\ each\ type\ of\ sprite\n
 comment4.params=
 comment4.target=void\ move()
-comment4.text=\n\ iterates\ through\ all\ aliens\ to\ move\ them\n
+comment4.text=\n\ The\ move\ method\ uses\ for-loops\ to\ iterate\ through\ the\ alien\ list\ to\ move\ all\ of\ them\ to\ either\ side\n\ Once\ the\ aliens\ touch\ a\ border\ of\ the\ JFrame,\ the\ aliens\ move\ the\ other\ way\ and\ go\ down\ by\ one\ row\n\ \n\ The\ method\ moves\ the\ bullets\ at\ a\ constant\ velocity\ from\ the\ ship\ towards\ the\ aliens\n\ Once\ bullets\ are\ out\ of\ screen,\ they\ are\ removed\ from\ the\ bulletArray\n\ Once\ all\ the\ aliens\ are\ defeated,\ the\ program\ moves\ to\ the\ next\ level\ by\ incrementing\ columns\ and\ rows\ of\ aliens\ by\ 1\n
 comment5.params=
 comment5.target=void\ createAliens()
-comment5.text=\n\ Creates\ Aliens\ in\ a\ array\ formation\ by\ iterating\ through\ two\ for-loops\ to\ place\ the\ aliens\ in\ specific\ areas\ of\ the\ 16x16\ grid\ frame\n
+comment5.text=\n\ Creates\ Aliens\ in\ an\ array\ formation\ by\ iterating\ through\ two\ for-loops\ to\ place\ the\ aliens\ in\ specific\ areas\ side-by-side\ of\ the\ 16x16\ grid\ frame\n\ The\ aliens\ are\ then\ added\ to\ the\ alienArray\n
 comment6.params=a\ b
 comment6.target=boolean\ detectCollision(SpaceInvaders.Sprite,\ SpaceInvaders.Sprite)
+comment6.text=\n\ This\ method\ detects\ if\ a\ bullet\ collides\ with\ an\ alien\ \n\ This\ method\ works\ by\ making\ sure\ all\ portions\ of\ an\ edge\ overlap\ by\ comparing\ the\ borders\ of\ a\ bullet\ and\ alien\n\ I\ learned\ about\ the\ derivation\ of\ this\ formula\ from\:\ \n\ Dev,\ Aristurtle.\ \u201C\ Axis\ Aligned\ Bounding\ Box\ Collision\ Detection\ |\ MonoGame.\u201D\ YouTube,\ 10\ Mar.\ 2024,\ www.youtube.com/watch?v\=UOfbGeq0ZkM&t\=94s.\ \n\ Accessed\ 17\ May\ 2026.\ \n
 comment7.params=e
 comment7.target=void\ actionPerformed(java.awt.event.ActionEvent)
 comment7.text=\n\ Unimplemented\ method\ for\ ActionListener\n\ repaints\ the\ frame\n

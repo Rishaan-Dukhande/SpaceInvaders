@@ -1,8 +1,11 @@
 #BlueJ package file
-editor.fx.0.height=728
-editor.fx.0.width=800
-editor.fx.0.x=320
-editor.fx.0.y=56
+dependency1.from=Game
+dependency1.to=SpaceInvaders
+dependency1.type=UsesDependency
+editor.fx.0.height=1037
+editor.fx.0.width=1323
+editor.fx.0.x=88
+editor.fx.0.y=-1415
 objectbench.height=100
 objectbench.width=776
 package.divider.horizontal=0.6
@@ -13,7 +16,7 @@ package.editor.x=40
 package.editor.y=63
 package.frame.height=600
 package.frame.width=800
-package.numDependencies=0
+package.numDependencies=1
 package.numTargets=2
 package.showExtends=true
 package.showUses=true
