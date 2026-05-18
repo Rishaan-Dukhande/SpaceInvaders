@@ -72,8 +72,16 @@ public class SpaceInvaders extends JPanel implements ActionListener, KeyListener
     int alienCount = 0; //number of aliens to defeat (row * column)
     int alienVelocityX = 1; //aliens move 1 tile every time;
     
+    
+    //bullets
+    ArrayList<Sprite> bulletArray;
+    int bulletWidth = tileSize/8;
+    int bulletHeight = tileSize/2;
+    int bulletVelocityY = -10; //bullets moving speed
+    
     Timer gameLoop;
-        
+    
+    
 
     /**
      * Constructor for objects of class SpaceInvaders
@@ -103,6 +111,7 @@ public class SpaceInvaders extends JPanel implements ActionListener, KeyListener
         
         ship = new Sprite(shipX, shipY, shipWidth, shipHeight, shipImg);
         alienArray = new ArrayList<Sprite>();
+        bulletArray = new ArrayList<Sprite>();
         
         //game timer
         gameLoop = new Timer(1000/60, this); //reloads every 16.6ms at 60fps
@@ -219,6 +228,10 @@ public class SpaceInvaders extends JPanel implements ActionListener, KeyListener
         } 
         else if (e.getKeyCode() == KeyEvent.VK_RIGHT && ship.x + ship.width + shipVelocityX <= boardWidth){ //added to account for right side of ship
             ship.x += shipVelocityX; //moves ship right one tile
+        }
+        else if (e.getKeyCode() == KeyEvent.VK_SPACE) 
+        {
+            Sprite bullet = new Sprite(ship.x + shipWidth * 15/32, ship.y, bulletWidth, bulletHeight, null);
         }
     }
     
