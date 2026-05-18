@@ -140,6 +140,15 @@ public class SpaceInvaders extends JPanel implements ActionListener, KeyListener
             }
         }
         
+        //bullets
+        g.setColor(Color.white);
+        for (int i = 0; i < bulletArray.size(); i++) {
+            Sprite bullet = bulletArray.get(i);
+            if (!bullet.used) {
+                g.drawRect(bullet.x, bullet.y, bullet.width, bullet.height);
+                g.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
+            }
+        }
     }
     
     /*
@@ -166,6 +175,37 @@ public class SpaceInvaders extends JPanel implements ActionListener, KeyListener
                 }
             }
         }
+        
+        //bullets
+        for (int i = 0; i < bulletArray.size(); i++){
+            Sprite bullet = bulletArray.get(i);
+            bullet.y += bulletVelocityY;
+            
+            for (int j = 0; j < alienArray.size(); j++){
+                Sprite alien = alienArray.get(j);
+                if (!bullet.used && alien.alive && detectCollision(bullet, alien)){
+                    bullet.used = true;
+                    alien.alive = false;
+                    alienCount--;
+                }
+            }
+        }
+        
+        //clear unncesseary bullets that are out of screen
+        while (bulletArray.size() > 0 && (bulletArray.get(0).used || bulletArray.get(0).y < 0)){
+            bulletArray.remove(0); //removes the first element of the array (unncessessary bullet)
+        }
+        
+        //next level
+        if (alienCount == 0) {
+            alienColumns = Math.min(alienColumns + 1, columns/2 - 2); //cap column at 16/2 -2 = 6
+            alienRows = Math.min(alienRows + 1, rows - 6); //cap row at 16-6 = 10
+            //clears aliens and bullets so that bullets don't destroy aliens before they are constructed
+            alienArray.clear();
+            bulletArray.clear();
+            createAliens();
+            
+        }
     }
     /*
      * Creates Aliens in a array formation by iterating through two for-loops to place the aliens in specific areas of the 16x16 grid frame
@@ -191,6 +231,12 @@ public class SpaceInvaders extends JPanel implements ActionListener, KeyListener
         alienCount = alienArray.size(); 
     }
     
+    public boolean detectCollision(Sprite a, Sprite b) {
+        return a.x < b.x + b.width &&
+        a.x + a.width > b.x &&
+        a.y < b.y + b.height &&
+        a.y + a.height > b.y;
+    }
     /*
      * Unimplemented method for ActionListener
      * repaints the frame
@@ -232,6 +278,7 @@ public class SpaceInvaders extends JPanel implements ActionListener, KeyListener
         else if (e.getKeyCode() == KeyEvent.VK_SPACE) 
         {
             Sprite bullet = new Sprite(ship.x + shipWidth * 15/32, ship.y, bulletWidth, bulletHeight, null);
+            bulletArray.add(bullet);
         }
     }
     
