@@ -1,12 +1,16 @@
 ------------------------------------------------------------------------
-This is the project README file. Here, you should describe your project.
-Tell the reader (someone who does not know anything about this project)
-all they need to know. The comments should usually include at least:
+# README
 ------------------------------------------------------------------------
+@Rishaan D
 
-PROJECT TITLE:
-PURPOSE OF PROJECT:
-VERSION or DATE:
-HOW TO START THIS PROJECT:
-AUTHORS:
-USER INSTRUCTIONS:
+SpaceInvaders (made with java)
+This project allows anyone to play the arcade game SpaceInvaders at home
+This project was developed on 5/16/2026 - 5/17/2026 in ~ 2hrs
+
+ * This game utilizes a GUI with JFrame and JPanel and utilizes inheritance
+ * The game starts by creating a 2x3 grid of aliens for level 1
+ * Every time the player destroys all the aliens, the array of aliens in the next level increases by 1 row and 1 column
+ * The play can move the ship with the right and left arrow keys and shoot bullets with the space key.
+ * Once the aliens hit the ship, the game is over. The user can restart the game by pressing any key.
+
+You can see the code in action @ https://go.screenpal.com/watch/cOhFfqntyHS 
