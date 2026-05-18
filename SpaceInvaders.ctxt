@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.target=SpaceInvaders
+comment1.params=
+comment1.target=SpaceInvaders()
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ SpaceInvaders\n
+comment2.params=g
+comment2.target=void\ paintComponent(java.awt.Graphics)
+comment3.params=g
+comment3.target=void\ draw(java.awt.Graphics)
+comment4.params=e
+comment4.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment4.text=\n\ Unimplemented\ method\ for\ ActionListener\n\ repaints\ the\ frame\n
+comment5.params=e
+comment5.target=void\ keyPressed(java.awt.event.KeyEvent)
+comment5.text=\n\ Unimplemented\ method\ for\ KeyListener\n\ Knows\ if\ the\ key\ has\ been\ pressed\ (like\ if\ a\ key\ is\ continously\ being\ pressed\ \=\ shoot)\n
+comment6.params=e
+comment6.target=void\ keyTyped(java.awt.event.KeyEvent)
+comment6.text=\n\ Unimplemented\ method\ for\ KeyListener\n\ Finds\ out\ what\ key\ is\ pressed\n
+comment7.params=e
+comment7.target=void\ keyReleased(java.awt.event.KeyEvent)
+comment7.text=\n\ Unimplemented\ method\ for\ KeyListener\n\ Knows\ if\ the\ key\ has\ been\ released\n
+numComments=8
