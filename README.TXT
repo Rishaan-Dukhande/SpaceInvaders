@@ -1,25 +1,30 @@
-------------------------------------------------------------------------
-# README
+# 👾 Space Invaders
 
-<img src="SpaceInvaders.png" width="450" height="300">
-------------------------------------------------------------------------
-@Rishaan D
+A retro arcade Space Invaders game built from scratch in Java using the BlueJ IDE. 
 
-SpaceInvaders (made with java)
-This project allows anyone to play the arcade game SpaceInvaders at home
-This project was developed on 5/16/2026 - 5/17/2026 in ~ 2hrs
+![Gameplay Screenshot](SpaceInvaders.png)
 
-Project Description:
- * This game utilizes a GUI with JFrame and JPanel and utilizes inheritance
- * The game starts by creating a 2x3 grid of aliens for level 1
- * Every time the player destroys all the aliens, the array of aliens in the next level increases by 1 row and 1 column
- * The play can move the ship with the right and left arrow keys and shoot bullets with the space key.
- * Once the aliens hit the ship, the game is over. The user can restart the game by pressing any key.
+---
 
-AI USE:
- * No AI was used to create this project
- * The tutorial used is www.youtube.com/watch?v=UILUMvjLEVU
+## 📝 Project Overview
+This project was developed between May 16, 2026, and May 17, 2026 (~2 hours of core development time). It utilizes a graphical user interface (GUI) built with `JFrame` and `JPanel`, and leverages core Object-Oriented Programming (OOP) principles like inheritance.
 
-Live Demo: You can see the code in action @ https://go.screenpal.com/watch/cOhFfqntyHS 
+### 🎮 Gameplay Mechanics
+* **Dynamic Difficulty:** The game starts with a 2x3 grid of aliens for Level 1. Every time you clear the board, the next level increases dynamically by 1 row and 1 column.
+* **Controls:** * `Left / Right Arrow Keys` — Move the player ship.
+  * `Spacebar` — Shoot lasers.
+* **Game Over Status:** If an alien touches your ship, the game ends. You can instantly restart a new session by pressing any key.
 
+---
 
+## 🤖 AI & Tutorial Disclosure
+* **Code Implementation:** No AI assistants were used to generate the code for this project.
+* **Reference Tutorial:** Built following the foundational guide from [this YouTube Tutorial](https://www.youtube.com/watch?v=UILUMvjLEVU).
+
+---
+
+## 🚀 Live Demo
+Want to see the game in action? 
+👉 **[Watch the Gameplay Video Stream here](https://go.screenpal.com/watch/c0hFfqntyHS)**
+
+Developed by @Rishaan D
