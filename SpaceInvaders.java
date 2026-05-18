@@ -116,7 +116,19 @@ public class SpaceInvaders extends JPanel implements ActionListener, KeyListener
     
     public void draw(Graphics g)
     {
+        // draw ship
         g.drawImage(ship.img, ship.x, ship.y, ship.width, ship.height, null);
+        
+        //aliens
+        for (int i = 0; i < alienArray.size(); i++) 
+        {
+            Sprite alien = alienArray.get(i);
+            if (alien.alive) 
+            {
+                g.drawImage(alien.img, alien.x, alien.y, alien.width, alien.height, null);
+            }
+        }
+        
     }
     
     /*
@@ -127,7 +139,7 @@ public class SpaceInvaders extends JPanel implements ActionListener, KeyListener
         Random random = new Random();
         for(int r = 0; r < alienRows; r++)
         {
-            for (int c = 0; r < alienColumns; c++)
+            for (int c = 0; c < alienColumns; c++)
             {
                 int randomImgIndex = random.nextInt(alienImgArray.size()); //upperbound round - random numbers 0 - size - 1
                 Sprite alien = new Sprite(
@@ -137,8 +149,10 @@ public class SpaceInvaders extends JPanel implements ActionListener, KeyListener
                     alienHeight,
                     alienImgArray.get(randomImgIndex)
                 );
+                alienArray.add(alien);
             }
         }
+        alienCount = alienArray.size(); 
     }
     
     /*
