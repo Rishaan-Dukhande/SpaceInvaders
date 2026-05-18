@@ -80,7 +80,8 @@ public class SpaceInvaders extends JPanel implements ActionListener, KeyListener
     int bulletVelocityY = -10; //bullets moving speed
     
     Timer gameLoop;
-    
+    int score = 0;
+    boolean gameOver = false;
     
 
     /**
@@ -149,6 +150,16 @@ public class SpaceInvaders extends JPanel implements ActionListener, KeyListener
                 g.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
             }
         }
+        
+        //score
+        g.setColor(Color.white);
+        g.setFont(new Font("Arial", Font.PLAIN, 32));
+        if (gameOver) {
+            g.drawString("Game Over: " + String.valueOf(score), 10, 35);
+        }
+        else {
+            g.drawString(String.valueOf(score), 10, 35);
+        }
     }
     
     /*
@@ -173,6 +184,10 @@ public class SpaceInvaders extends JPanel implements ActionListener, KeyListener
                         alienArray.get(j).y += alienHeight;
                     }
                 }
+                
+                if (alien.y >= ship.y) {
+                    gameOver = true;
+                }
             }
         }
         
@@ -187,6 +202,7 @@ public class SpaceInvaders extends JPanel implements ActionListener, KeyListener
                     bullet.used = true;
                     alien.alive = false;
                     alienCount--;
+                    score += 100;
                 }
             }
         }
@@ -198,11 +214,14 @@ public class SpaceInvaders extends JPanel implements ActionListener, KeyListener
         
         //next level
         if (alienCount == 0) {
+            score += alienColumns * alienRows * 100; //bonus points for clearing each level
+            //increase the number of aliens in columns and rows by 1
             alienColumns = Math.min(alienColumns + 1, columns/2 - 2); //cap column at 16/2 -2 = 6
             alienRows = Math.min(alienRows + 1, rows - 6); //cap row at 16-6 = 10
             //clears aliens and bullets so that bullets don't destroy aliens before they are constructed
             alienArray.clear();
             bulletArray.clear();
+            alienVelocityX = 1; //resets velocity to go right once all aliens are reloaded
             createAliens();
             
         }
@@ -245,6 +264,9 @@ public class SpaceInvaders extends JPanel implements ActionListener, KeyListener
     public void actionPerformed(ActionEvent e){
         move(); //moves 60 px every 1 second
         repaint(); //built in function to redraw objects
+        if (gameOver) {
+            gameLoop.stop();
+        }
     }
     
     /*
@@ -268,6 +290,18 @@ public class SpaceInvaders extends JPanel implements ActionListener, KeyListener
     @Override
     public void keyReleased(KeyEvent e) 
     {
+        if (gameOver) { //restarts game if any key is pressed
+            ship.x = shipX;
+            alienArray.clear();
+            bulletArray.clear();
+            score = 0;
+            alienVelocityX = 1;
+            alienColumns = 3;
+            alienRows = 2;
+            gameOver = false;
+            createAliens();
+            gameLoop.start();
+        }
         if (e.getKeyCode() == KeyEvent.VK_LEFT && ship.x - shipVelocityX >= 0)
         {
             ship.x -= shipVelocityX; //moves ship left one tile
