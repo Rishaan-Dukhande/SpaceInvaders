@@ -1,7 +1,7 @@
 ------------------------------------------------------------------------
 # README
 
-![Gameplay Screenshot](SpaceInvaders.png)
+<img src="SpaceInvaders.png" width="450" height="300">
 ------------------------------------------------------------------------
 @Rishaan D
 
