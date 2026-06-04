@@ -1,13 +1,13 @@
 # 👾 Space Invaders
 
-A retro arcade Space Invaders game built from scratch in Java using the BlueJ IDE. 
+Space Invaders is a common retro aracade game played in arcades across the world. Built from scratch using BlueJ, anyone can access the game, play for fun, and set high scores locally!
 
 ![Gameplay Screenshot](SpaceInvaders.png)
 
 ---
 
 ## 📝 Project Overview
-This project was developed between May 16, 2026, and May 17, 2026 (~2 hours of core development time). It utilizes a graphical user interface (GUI) built with `JFrame` and `JPanel`, and leverages core Object-Oriented Programming (OOP) principles like inheritance.
+It utilizes a graphical user interface (GUI) built with `JFrame` and `JPanel`, and leverages core Object-Oriented Programming (OOP) principles like inheritance.
 
 ### 🎮 Gameplay Mechanics
 * **Dynamic Difficulty:** The game starts with a 2x3 grid of aliens for Level 1. Every time you clear the board, the next level increases dynamically by 1 row and 1 column.
